@@ -1,0 +1,155 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  --color-cream: #f6f0dc;
+  --color-caramel: #c08852;
+  --color-brownie: #5e3023;
+  --color-coffee: #895737;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f6f0dc;
+  --foreground: #5e3023;
+  --card: color-mix(in oklab, #895737 8%, #f6f0dc);
+  --card-foreground: #5e3023;
+  --popover: #f6f0dc;
+  --popover-foreground: #5e3023;
+  --primary: #c08852;
+  --primary-foreground: #f6f0dc;
+  --secondary: #895737;
+  --secondary-foreground: #f6f0dc;
+  --muted: color-mix(in oklab, #895737 12%, #f6f0dc);
+  --muted-foreground: #895737;
+  --accent: color-mix(in oklab, #c08852 20%, #f6f0dc);
+  --accent-foreground: #5e3023;
+  --destructive: #a3392b;
+  --border: color-mix(in oklab, #895737 22%, #f6f0dc);
+  --input: color-mix(in oklab, #895737 22%, #f6f0dc);
+  --ring: #c08852;
+  --chart-1: #c08852;
+  --chart-2: #895737;
+  --chart-3: #5e3023;
+  --chart-4: #f6f0dc;
+  --chart-5: #c08852;
+  --radius: 0.875rem;
+  --sidebar: #f6f0dc;
+  --sidebar-foreground: #5e3023;
+  --sidebar-primary: #c08852;
+  --sidebar-primary-foreground: #f6f0dc;
+  --sidebar-accent: #f6f0dc;
+  --sidebar-accent-foreground: #5e3023;
+  --sidebar-border: #895737;
+  --sidebar-ring: #c08852;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes page-flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  45%,
+  100% {
+    transform: rotateY(-180deg);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.animate-page-flip {
+  animation: page-flip 2.4s cubic-bezier(0.45, 0.05, 0.35, 1) infinite;
+}
+
+.animate-float-up {
+  animation: float-up 0.8s ease-out both;
+}
+
+.animate-loading-bar {
+  animation: loading-bar 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-flip,
+  .animate-loading-bar {
+    animation: none;
+  }
+}
